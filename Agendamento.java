@@ -1,10 +1,13 @@
 package clinicamedica;
 
+
 public class Agendamento {
     private Medico medico;
     private Paciente paciente;
     private String data;
     private String hora;
+    
+    
     
     public Agendamento(Medico medico, Paciente paciente, String data, String hora){
         this.paciente = paciente;
@@ -33,5 +36,4 @@ public class Agendamento {
     public Medico getMedico (){
         return medico; 
     }
-    
 }

@@ -29,5 +29,9 @@ public class ClinicaMedica {
         clinica.agendar(pac6, med2, "16/11/2026", "13:00");
         
     }
+
+    private static void agendar() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
 }

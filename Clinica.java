@@ -1,37 +1,78 @@
 package clinicamedica;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Clinica {
-    private final Agendamento[] agendamento;
-    private int total = 0;
-
-    public Clinica() {
-        this.agendamento = new Agendamento[100];
+    ArrayList<Agendamento> listaPaciente = new ArrayList<>();
+    ArrayList<Agendamento> listaMedico = new ArrayList<>();
+    Scanner scanner = new Scanner(System.in);
+    Agendamento ag1 = new Agendamento(new Medico(" ", " ", " ", " "),new Paciente(" "," "," "," "), " ", " ");
+    private int opcao;
+    private Agendamento agendamento;
+    private String nome;
+    private String email;
+    private String telefone;
+    private String crm;
+    private String Sintoma;
+    
+    public Clinica(){
     }
+ 
+    public void agendar(){
+        while (true) {
+            System.out.println("-----------------------------------------");
+            System.out.println("\t 1 - Cadastrar Paciente");
+            System.out.println("\t 2 - Cadastrar Medico");
+            System.out.println("\t 3 - Consultar Agenda");
+            System.out.println("\t 4 - Sair ");
+            System.out.printf("\t Digite uma opção para prosseguir: ");
+            opcao = scanner.nextInt();
+            scanner.nextLine();
 
-    public void agendar(Paciente paciente, Medico medico, String data, String hora) {
-        for (int i = 0; i < total; i++) {
-            Agendamento a = agendamento[i];
-            if (a.getMedico() == medico && a.getData().equals(data) && a.getHora().equals(hora)) {
-                System.out.println("-----------------------------------------");
-                System.out.println("\tHorario "+a.getData() +" as "+ a.getHora() + " do medico " + a.getMedico().getNome() + " Ocupado!");
-                return;
+            switch (opcao) {
+                case 1:
+                    System.out.println("-----------------------------------------");
+                    System.out.printf("\tDigite o nome do Paciente: ");
+                    nome = scanner.nextLine();
+                    ag1.getPaciente().setNome(nome);
+
+                    System.out.printf("\tDigite o telefone do Paciente: ");
+                    telefone = scanner.nextLine();
+                    ag1.getPaciente().SetTelefone(telefone);
+
+                    System.out.printf("\tDigite o email do Paciente: ");
+                    email = scanner.nextLine();
+                    ag1.getPaciente().setEmail(email);
+                    break;
+                case 2:
+                    System.out.println("-----------------------------------------");
+                    System.out.printf("\tDigite o nome do Medico: ");
+                    nome = scanner.nextLine();
+                    ag1.getMedico().setNome(nome);
+
+                    System.out.printf("\tDigite o telefone do Medico: ");
+                    telefone = scanner.nextLine();
+                    ag1.getMedico().SetTelefone(telefone);
+
+                    System.out.printf("\tDigite o email do Medico: ");
+                    email = scanner.nextLine();
+                    ag1.getMedico().setEmail(email);
+                    
+                    System.out.printf("\tDigite o Crm do Medico: ");
+                    crm = scanner.nextLine();
+                    ag1.getMedico().setCrm(crm);
+                    break;
+                case 3:
+                    System.out.println("boa");
+                    break;
+                case 4:
+                    return;
+                default:
+                    System.out.println("Opção inválida");
             }
         }  
-        
-        if (total >= agendamento.length) {
-            System.out.println("Agenda cheia!");
-            return;
-        }
-
-        agendamento[total] = new Agendamento(medico, paciente, data, hora);
-        total++;
-        
-        System.out.println("-----------------------------------------");
-        System.out.println("\tPaciente: " + paciente.getNome());
-        System.out.println("\tMedico: " + medico.getNome());
-        System.out.println("\tSecretaria: " + medico.secretaria().getNome());
-        System.out.println("\tData: " + data);
-        System.out.println("\tHora: " + hora);
-        System.out.println("\tSintoma: " + paciente.getSintomas());
+    }
+    public void marcarConsulta(Paciente paciente, Medico medico, String data, String hora) {
+        listaPaciente.add(new Agendamento(medico, paciente, data, hora));
     }
 }
