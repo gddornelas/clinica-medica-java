@@ -18,7 +18,7 @@ public class Pessoa {
         return this.nome;
     }
     
-    public void SetTelefone(String telefone){
+    public void setTelefone(String telefone){
         this.telefone = telefone;
     }
     public String getTelefone(){

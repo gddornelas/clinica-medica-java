@@ -6,15 +6,17 @@ public class Agendamento {
     private Paciente paciente;
     private String data;
     private String hora;
+    private String sintomas;
     
     
-    
-    public Agendamento(Medico medico, Paciente paciente, String data, String hora){
-        this.paciente = paciente;
+    public Agendamento(Medico medico, Paciente paciente,String sintomas, String data, String hora){
         this.medico = medico;
+        this.paciente = paciente;
+        this.sintomas = sintomas;
         this.data = data;
         this.hora = hora;
     }
+    
     
     public void setData(String data){
         this.data = data;
@@ -35,5 +37,12 @@ public class Agendamento {
     }
     public Medico getMedico (){
         return medico; 
+    }
+    
+    public void setSintomas(String sintomas){
+        this.sintomas = sintomas;
+    }
+    public String getSintomas(){
+        return sintomas;
     }
 }
